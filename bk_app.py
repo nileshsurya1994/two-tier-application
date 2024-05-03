@@ -1,14 +1,16 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
+#from flask import Flask
+#from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
 # Configure MySQL from environment variables
-app.config['MYSQL_HOST'] = 'mysql'  # Use the container name
-app.config['MYSQL_USER'] = 'admin'   # MySQL username
-app.config['MYSQL_PASSWORD'] = 'admin'  # MySQL password
-app.config['MYSQL_DB'] = 'myDb'  # Modify accordingly if needed
+app.config['MYSQL_HOST'] = os.environ.get('MYSQL_HOST', 'localhost')
+app.config['MYSQL_USER'] = os.environ.get('MYSQL_USER', 'default_user')
+app.config['MYSQL_PASSWORD'] = os.environ.get('MYSQL_PASSWORD', 'default_password')
+app.config['MYSQL_DB'] = os.environ.get('MYSQL_DB', 'default_db')
 
 # Initialize MySQL
 mysql = MySQL(app)

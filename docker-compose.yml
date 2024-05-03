@@ -2,7 +2,7 @@ version: '3'
 services:
 
   backend:
-    image: raghvendra82/2tier-flaskapp:v1
+    image: nileshsuryawanshi65/2tier-flaskapp:v1
     ports:
       - "5000:5000"
     environment:
